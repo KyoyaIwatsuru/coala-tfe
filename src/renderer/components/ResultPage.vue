@@ -67,7 +67,7 @@
           :to="{name: 'index', params: {}}"
           tag="button" class="btn navbar-btn">{{ $t("result.returnToMenu") }}</router-link>
         <router-link v-if="nextProbPath"
-          :to="{ name: 'question', params: {fileName: nextProbPath, questionId: 1} }"
+          :to="{ name: 'question', params: {fileName: nextProbPath, questionId: 0} }"
           tag="button" class="btn navbar-btn">{{ $t("result.nextProb") }}</router-link>
 			  </div>
       </div>

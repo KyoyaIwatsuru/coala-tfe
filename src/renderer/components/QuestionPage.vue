@@ -27,8 +27,11 @@
         </div>
       </div>
       <div class="row" id="choices-container">
-        <div v-for="(c, i) in questions[$route.params.questionId].choices" class="col-md-6 choice-container">
+        <div v-for="(c, i) in questions[$route.params.questionId].choices" :key="i" class="col-md-6 choice-container">
           <button @click="selectChoice(i)" :class="{selected: isSelected(i)}" class="btn choice-btn">{{ c }}</button>
+        </div>
+        <div id="skip-container" class="col-md-6 choice-container">
+          <button @click="selectSkip(1000)" :class="{selected: isSelected(i)}" class="btn choice-btn">{{ "この中に解答はない" }}</button>
         </div>
       </div>
     </div>
@@ -98,6 +101,42 @@
         return cp[0]
       },
       selectChoice (choice) {
+        const correctness = (choice === this.questions[this.$route.params.questionId].answer) ? 1 : 0
+        this.$store.commit('SELECT_CHOICE', {
+          id: this.uid,
+          questionId: this.$route.params.questionId,
+          choice: choice,
+          correctness: correctness,
+          confidence: 0 // tentative
+        })
+        this.$forceUpdate()
+        this.$http({
+          method: 'get',
+          url: 'http://localhost:8765/recording/capture'
+        })
+        this.$http({
+          method: 'post',
+          url: 'http://localhost:8765/mcq_confidence/stop_solving',
+          data: JSON.stringify({
+            id: this.uid,
+            answer: choice,
+            correctness: correctness
+          })
+        }).then(function (response) {
+          this.$store.commit('SELECT_CHOICE', {
+            id: this.uid,
+            questionId: this.$route.params.questionId,
+            choice: choice,
+            correctness: correctness,
+            confidence: response.data.confidence
+          })
+          this.stopSolving()
+        }.bind(this)).catch(function (error) {
+          console.log(error)
+          this.stopSolving()
+        }.bind(this))
+      },
+      selectSkip (choice) {
         const correctness = (choice === this.questions[this.$route.params.questionId].answer) ? 1 : 0
         this.$store.commit('SELECT_CHOICE', {
           id: this.uid,
@@ -240,6 +279,12 @@
   margin: 20px;
 }
 
+#skip-container {
+  // margin: 10px;
+  margin: 0 auto;
+  // text-align: center;
+}
+
 #headerprobid {
 	text-align: left;
   font-style: italic;
@@ -264,14 +309,18 @@
 .choice-btn {
   @extend .coalaButton;
   width: 100%;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 40px;
+  padding-bottom: 40px;
   font-size: 40px;
   min-height: 118px;
   &.selected {
     background-color: darken($gray, 50%);
     color: $white;
   }
+}
+
+.choice-btn:focus{
+  outline: 4px solid $white;
 }
 
 .label-button {
