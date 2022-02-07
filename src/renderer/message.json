@@ -1,0 +1,119 @@
+{
+  "en": {
+    "index": {
+      "login": "Login",
+      "logout": "Lgout",
+      "preferences": "Preferences",
+      "eyeTrackerIsNotConnected": "【Error】An eye tracker is not connected. <br>Please check the connection and restart this application.",
+      "introductionHeader": "Coala: Confidence Aware Learning Assistant",
+      "introduction": "This application estimates your confidences while solving problems. You can review results efficiently by checking the combination of the confidence and correctness (i.e., detecting an incorrect answer with high confidence or a correct answer selected by chance).",
+      "files": "Files",
+      "loginMessage": "Insert your user id"
+    },
+    "question": {
+      "textHeader": "Choose the one closest to the meaning of the underlined word.",
+      "labelModalTitle": "Do you have confidence in your answer?"
+    },
+    "result": {
+      "lowConfidence": "Low confidence",
+      "highConfidence": "High confidence",
+      "feedbackAsLowConfidence": "Feedback as low conf.",
+      "feedbackAsHighConfidence": "Feedback as high conf.",
+      "cancelFeedback": "Cancel the feedback",
+      "correct": "Correct",
+      "selected": "Selected",
+      "incorrect": "Incorrect",
+      "returnToMenu": "Return to the Menu",
+      "unsolved": "Unsolved",
+      "readAnswer": "Read the answer",
+      "resultDesciption": "<i class='twa twa-umbrella'></i> : Incorrect answer with high confidence</br><i class='twa twa-cloud'></i> : Correct answer with low confidence",
+      "feedbackDesciption": "Please click a feedback button if the estimation result is wrong.<br>It improves next estimation accuracies.",
+      "nextProb": "Next"
+    },
+    "common": {
+      "menu": "Menu",
+      "example": "Example",
+      "mark": "Mark",
+      "yes": "Yes",
+      "no": "No"
+    }
+  },
+  "ja": {
+    "index": {
+      "login": "ログイン",
+      "logout": "ログアウト",
+      "preferences": "設定",
+      "eyeTrackerIsNotConnected": "【エラー】アイトラッカーが接続されていません。<br>接続を確認してアプリケーションを再起動してください。",
+      "introductionHeader": "確信度推定学習システム",
+      "introduction": "問題を解く際に確信をもって回答したかを推定できる学習システムです。正誤と確信ありなしの組み合わせを確認することによって、確信を持って回答したが間違えた問題、確信を持たずに回答したが偶然正解した問題など、あなたが特に復習すべき問題を提案します。",
+      "files": "問題一覧",
+      "loginMessage": "User IDを入力してください"
+    },
+    "question": {
+      "textHeader": "下線の単語の意味に最も近いものを選びなさい。",
+      "labelModalTitle": "回答に確信がありますか？"
+    },
+    "result": {
+      "lowConfidence": "確信なし",
+      "highConfidence": "確信あり",
+      "feedbackAsLowConfidence": "確信なしに修正",
+      "feedbackAsHighConfidence": "確信ありに修正",
+      "cancelFeedback": "修正を取り消す",
+      "correct": "正解",
+      "selected": "選択",
+      "incorrect": "不正解",
+      "returnToMenu": "メニューに戻る",
+      "unsolved": "未回答",
+      "readAnswer": "解説を読む",
+      "resultDesciption": "<i class='twa twa-umbrella'></i> : 確信を持って回答して間違えた、特に復習すべき問題です。</br><i class='twa twa-cloud'></i> : 確信を持たずに回答して正解した、念のため見直すべき問題です。",
+      "feedbackDesciption": "確信度推定の結果が異なる場合は、確信度を修正ボタンを押してください。<br>今後システムがあなたの確信度をよりよく推定できるようになります。",
+      "nextProb": "次へ"
+    },
+    "common": {
+      "menu": "メニューに戻る",
+      "example": "例題",
+      "mark": "採点する",
+      "yes": "はい",
+      "no": "いいえ"
+    }
+  },
+  "de": {
+    "index": {
+      "login": "Einloggen",
+      "logout": "Ausloggen",
+      "preferences": "Einstellungen",
+      "eyeTrackerIsNotConnected": "[Fehler] Eyetracker nicht verbunden. <br>Bitte die Verbindung kontrollieren und das Programm neu starten.",
+      "introductionHeader": "Einleitung",
+      "introduction": "Dieses Projekt stellt einen kleinen Vokabeltest dar, der von einem Eyetracker unterstützt wird. Der Computer analysiert Ihr Leseverhalten und versucht darauf basierend Ihr Selbstvertrauen beim Beantworten der Fragen vorherzusagen. Klicken Sie einfach unten auf 'sample1' oder 'sample2' und füllen Sie die Lücken in den Sätzen durch Klicken auf jeweils eine Antwort aus. Warten Sie nach der Beantwortung aller Fragen kurz ab und es wird angezeigt, wie der Computer Ihr Selbstvertrauen einschätzt.",
+      "files": "Aufgaben",
+      "loginMessage": "Bitte geben Sie eine Benutzer-ID ein"
+    },
+    "question": {
+      "textHeader": "Bitte die Lücke mit der am besten passenden Antwort ausfüllen.",
+      "labelModalTitle": "Bist du dir der Antwort sicher?",
+      "yes": "Ja",
+      "no": "Nein"
+    },
+    "result": {
+      "lowConfidence": "Geringem Selbstvertrauen",
+      "highConfidence": "Hohem Selbstvertrauen",
+      "feedbackAsLowConfidence": "feedback",
+      "feedbackAsHighConfidence": "feedback",
+      "cancelFeedback": "Abbrechen der Rückmeldung",
+      "correct": "Richtige Antwort",
+      "selected": "Deine Antwort",
+      "incorrect": "Falsche Antwort",
+      "returnToMenu": "Zurück zum Menü",
+      "unsolved": "【Unbeantwortet】",
+      "readAnswer": "Erklärung",
+      "resultDesciption": "<i class='twa twa-umbrella'></i> : Falsche Antwort bei hohem Selbstvertrauen</br><i class='twa twa-cloud'></i> : Richtige Antwort bei geringem Selbstvertrauen",
+      "feedbackDesciption": "Bitte auf 'Feedback' klicken, falls die Einschätzung des Selbstvertrauens falsch ist. Das System wird auf Basis des Feedbacks den Algorithmus anpassen.",
+      "nextProb": "Weiter"
+    },
+    "common": {
+      "menu": "Menü",
+      "example": "Beispiel",
+      "mark": "Ergebnisse"
+    }
+  }
+}
