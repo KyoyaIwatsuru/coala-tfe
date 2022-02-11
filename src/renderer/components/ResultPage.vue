@@ -7,29 +7,39 @@
           :to="{name: 'index', params: {}}"
           tag="button" class="btn navbar-btn">{{ $t("common.menu") }}</router-link>
       </div>
-      <div id="result-content">
+      <div>
+        <!--<h3>{{ $t("index.introductionHeader") }}</h3> -->
+        <h1 class="text-center">{{$t("index.end")}}</h1>
+      </div>
+      <div id="question-navbar">
+        <span id="headerprobid">{{currentProb()}}</span>
+        <router-link 
+          :to="{ name: 'question', params: {fileName: nextProbPath, questionId: 0} }"
+          tag="button" class="btn navbar-btn">{{ $t("result.nextProb") }}</router-link>
+      </div>
+      <!-- <div id="result-content">
         <table class="table">
-          <!-- <template v-for="(q, i) in questions" v-if="i > 0"> -->
+           <template v-for="(q, i) in questions" v-if="i > 0"> 
           <template v-for="(q, i) in questions">
             <tr>
               <td align="left">Q{{ i+1 }}
                 <span v-if="results[i] === undefined" class="red">【{{ $t("result.unsolved") }}】</span>
                 <span v-else-if="results[i].correctness === 1" class="green">
                   【{{ $t("result.correct") }}】
-                  <!-- <span v-if="results[i].confidence === 1">{{ $t("result.highConfidence") }}</span>
-                  <span v-else-if="results[i].confidence === 0">{{ $t("result.lowConfidence") }} <i class="twa twa-cloud"></i></span> -->
+                  <span v-if="results[i].confidence === 1">{{ $t("result.highConfidence") }}</span>
+                  <span v-else-if="results[i].confidence === 0">{{ $t("result.lowConfidence") }} <i class="twa twa-cloud"></i></span> 
                 </span>
                 <span v-else class="red">
                   【{{ $t("result.incorrect") }}】
-                  <!-- <span v-if="results[i].confidence === 1">{{ $t("result.highConfidence") }} <i class="twa twa-umbrella"></i></span>
-                  <span v-else-if="results[i].confidence === 0">{{ $t("result.lowConfidence") }}</span> -->
+                  <span v-if="results[i].confidence === 1">{{ $t("result.highConfidence") }} <i class="twa twa-umbrella"></i></span>
+                  <span v-else-if="results[i].confidence === 0">{{ $t("result.lowConfidence") }}</span> 
                 </span>
               </td>
               <td align="right">
                 <div v-if="results[i] !== undefined">
                   <b-btn v-b-toggle="'collapse' + i" v-if="results[i] !== undefined" class="btn btn-info feedback-btn">{{ $t("result.readAnswer") }}</b-btn>
-                  <!-- <b-btn v-if="results[i].confidence === 1" @click="sendFeedback(i)" class="btn btn-outline-info feedback-btn" :id="'feedback-'+i">{{ $t("result.feedbackAsLowConfidence") }}</b-btn>
-                  <b-btn v-else-if="results[i].confidence === 0" @click="sendFeedback(i)" class="btn btn-outline-info feedback-btn" :id="'feedback-'+i">{{ $t("result.feedbackAsHighConfidence") }}</b-btn> -->
+                   <b-btn v-if="results[i].confidence === 1" @click="sendFeedback(i)" class="btn btn-outline-info feedback-btn" :id="'feedback-'+i">{{ $t("result.feedbackAsLowConfidence") }}</b-btn>
+                  <b-btn v-else-if="results[i].confidence === 0" @click="sendFeedback(i)" class="btn btn-outline-info feedback-btn" :id="'feedback-'+i">{{ $t("result.feedbackAsHighConfidence") }}</b-btn> 
                 </div>
               </td>
             </tr>
@@ -59,9 +69,9 @@
             </tr>
           </template>
           </table>
-        </table>
+        </table> -->
         <!-- <p class="result-description" v-html="$t('result.resultDesciption')"></p>
-        <p class="result-description" v-html="$t('result.feedbackDesciption')"></p> -->
+        <p class="result-description" v-html="$t('result.feedbackDesciption')"></p>
         <div style="text-align: center;">
         <router-link
           :to="{name: 'index', params: {}}"
@@ -70,7 +80,7 @@
           :to="{ name: 'question', params: {fileName: nextProbPath, questionId: 0} }"
           tag="button" class="btn navbar-btn">{{ $t("result.nextProb") }}</router-link>
 			  </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -82,13 +92,18 @@ import Store from 'electron-store'
 const electronStore = new Store()
 
 function getNextProbPath (path) {
-  const pi = path.match(/\d\d/)
+  const cp = path.match(/\d-\d\d/g)
+  const pi = cp[0].match(/\d\d/g)
+  console.log(cp)
+  console.log(pi)
   if (pi == null) {
     return false
   }
-  const probId = pi[0]
+  var probId = pi[0]
   var nextId = Number(probId) + 1
   nextId = ('00' + nextId).slice(-2)
+  probId = '-' + probId
+  nextId = '-' + nextId
   var nextPath = path.replace(probId, nextId)
   try {
     fs.statSync(nextPath)
@@ -108,6 +123,7 @@ export default {
     }
   },
   created () {
+    console.log(getNextProbPath(this.$store.state.Result.currentProbPath))
     this.$store.commit('RESET_RESULTS')
     const csv = fs.readFileSync(this.$route.params.fileName, 'utf-8')
     const questions = Papa.parse(csv, {header: true, skipEmptyLines: true})['data']

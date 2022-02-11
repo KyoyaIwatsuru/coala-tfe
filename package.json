@@ -1,6 +1,6 @@
 {
   "name": "coala",
-  "version": "2.8.0",
+  "version": "2.8.5",
   "author": "Shoya Ishimaru <shoya.ishimaru@gmail.com>",
   "description": "Confidence-aware Learning Assistant -- Estimating Self-confidences on multiple-choice questions",
   "license": null,

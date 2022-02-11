@@ -2,9 +2,9 @@
 <div>
   <div id="container">
     <div id="question-navbar">
-      <b-btn v-show="userId==='guest'" v-b-modal.loginModal　class="btn navbar-btn">{{ $t("index.login") }}</b-btn>
+      <b-btn v-show="userId==='guest'" v-b-modal.loginModal class="btn navbar-btn">{{ $t("index.login") }}</b-btn>
       <b-btn v-show="userId!=='guest'" @click="clearUserId" class="btn navbar-btn">{{ $t("index.logout") }}</b-btn>
-      <b-btn v-b-modal.preferenceModal　class="btn navbar-btn">{{ $t("index.preferences") }}</b-btn>
+      <b-btn v-b-modal.preferenceModal class="btn navbar-btn">{{ $t("index.preferences") }}</b-btn>
     </div>
     <div id='index-content'>
       <b-alert :show="showAlert" variant="danger" v-html="$t('index.eyeTrackerIsNotConnected')"></b-alert>
