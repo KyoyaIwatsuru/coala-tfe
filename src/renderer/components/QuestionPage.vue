@@ -30,9 +30,9 @@
         <div v-for="(c, i) in questions[$route.params.questionId].choices" :key="i" class="col-md-6 choice-container">
           <button @click="selectChoice(i)" :class="{selected: isSelected(i)}" class="btn choice-btn">{{ c }}</button>
         </div>
-        <div id="skip-container" class="col-md-6 choice-container">
+        <!-- <div id="skip-container" class="col-md-6 choice-container">
           <button @click="selectSkip(1000)" :class="{selected: isSelected(i)}" class="btn choice-btn">{{ "この中に解答はない" }}</button>
-        </div>
+        </div> -->
       </div>
     </div>
     <b-modal id="labelModal" hide-footer no-fade centered ref="labelModal" :title="$t('question.labelModalTitle')">
