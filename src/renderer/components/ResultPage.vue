@@ -8,8 +8,8 @@
           tag="button" class="btn navbar-btn">{{ $t("common.menu") }}</router-link>
       </div>
       <div>
-        <!--<h3>{{ $t("index.introductionHeader") }}</h3> -->
-        <h1 class="text-center">{{$t("index.end")}}</h1>
+        <h3>{{ $t("index.introductionHeader") }}</h3>
+        <!-- <h1 class="text-center">{{$t("index.end")}}</h1> -->
       </div>
       <div id="question-navbar">
         <span id="headerprobid">{{currentProb()}}</span>
@@ -17,31 +17,31 @@
           :to="{ name: 'question', params: {fileName: nextProbPath, questionId: 0} }"
           tag="button" class="btn navbar-btn">{{ $t("result.nextProb") }}</router-link>
       </div>
-      <!-- <div id="result-content">
+      <div id="result-content">
         <table class="table">
-           <template v-for="(q, i) in questions" v-if="i > 0"> 
+           <!-- <template v-for="(q, i) in questions" v-if="i > 0">  -->
           <template v-for="(q, i) in questions">
             <tr>
               <td align="left">Q{{ i+1 }}
                 <span v-if="results[i] === undefined" class="red">【{{ $t("result.unsolved") }}】</span>
                 <span v-else-if="results[i].correctness === 1" class="green">
                   【{{ $t("result.correct") }}】
-                  <span v-if="results[i].confidence === 1">{{ $t("result.highConfidence") }}</span>
-                  <span v-else-if="results[i].confidence === 0">{{ $t("result.lowConfidence") }} <i class="twa twa-cloud"></i></span> 
+                  <!-- <span v-if="results[i].confidence === 1">{{ $t("result.highConfidence") }}</span>
+                  <span v-else-if="results[i].confidence === 0">{{ $t("result.lowConfidence") }} <i class="twa twa-cloud"></i></span>  -->
                 </span>
                 <span v-else class="red">
                   【{{ $t("result.incorrect") }}】
-                  <span v-if="results[i].confidence === 1">{{ $t("result.highConfidence") }} <i class="twa twa-umbrella"></i></span>
-                  <span v-else-if="results[i].confidence === 0">{{ $t("result.lowConfidence") }}</span> 
+                  <!-- <span v-if="results[i].confidence === 1">{{ $t("result.highConfidence") }} <i class="twa twa-umbrella"></i></span>
+                  <span v-else-if="results[i].confidence === 0">{{ $t("result.lowConfidence") }}</span>  -->
                 </span>
               </td>
-              <td align="right">
+              <!-- <td align="right">
                 <div v-if="results[i] !== undefined">
                   <b-btn v-b-toggle="'collapse' + i" v-if="results[i] !== undefined" class="btn btn-info feedback-btn">{{ $t("result.readAnswer") }}</b-btn>
                    <b-btn v-if="results[i].confidence === 1" @click="sendFeedback(i)" class="btn btn-outline-info feedback-btn" :id="'feedback-'+i">{{ $t("result.feedbackAsLowConfidence") }}</b-btn>
                   <b-btn v-else-if="results[i].confidence === 0" @click="sendFeedback(i)" class="btn btn-outline-info feedback-btn" :id="'feedback-'+i">{{ $t("result.feedbackAsHighConfidence") }}</b-btn> 
                 </div>
-              </td>
+              </td> -->
             </tr>
             <tr v-if="results[i] !== undefined">
               <td colspan="2">
@@ -68,10 +68,9 @@
               </td>
             </tr>
           </template>
-          </table>
-        </table> -->
+        </table>
         <!-- <p class="result-description" v-html="$t('result.resultDesciption')"></p>
-        <p class="result-description" v-html="$t('result.feedbackDesciption')"></p>
+        <p class="result-description" v-html="$t('result.feedbackDesciption')"></p> -->
         <div style="text-align: center;">
         <router-link
           :to="{name: 'index', params: {}}"
@@ -80,7 +79,7 @@
           :to="{ name: 'question', params: {fileName: nextProbPath, questionId: 0} }"
           tag="button" class="btn navbar-btn">{{ $t("result.nextProb") }}</router-link>
 			  </div>
-      </div> -->
+      </div>
     </div>
   </div>
 </template>
