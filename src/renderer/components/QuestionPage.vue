@@ -27,8 +27,11 @@
         </div>
       </div>
       <div class="row" id="choices-container">
-        <div v-for="(c, i) in questions[$route.params.questionId].choices" :key="i" class="col-md-6 choice-container">
-          <button @click="selectChoice(i)" :class="{selected: isSelected(i)}" class="btn choice-btn">{{ c }}</button>
+        <div v-for="(c, i) in questions[$route.params.questionId].choices" :key="i" class="col-md-12 choice-container">
+          <div class="row">
+            <Input type="radio" name="Question" @click="selectChoice(i)" :class="{selected: isSelected(i)}" class="col-md-1 btn choice-btn"></Input>
+            <div class="col-md-11">{{ c }}</div>
+          </div>
         </div>
         <!-- <div id="skip-container" class="col-md-6 choice-container">
           <button @click="selectSkip(1000)" :class="{selected: isSelected(i)}" class="btn choice-btn">{{ "この中に解答はない" }}</button>
@@ -267,12 +270,14 @@
 <style lang="scss">
 #text-header {
   margin: 25px;
+  padding-left: 30px;
 }
 
 #text-content {
   margin: 25px;
   min-height: 100px;
   font-size: 30px;
+  padding-left: 30px;
 }
 
 #choices-container {
@@ -291,8 +296,9 @@
 }
 
 .choice-container {
-  text-align: center;
-  padding: 5px;
+  text-align: left;
+  font-size: 30px;
+  padding: 10px;
 }
 
 .coalaButton {
@@ -308,11 +314,11 @@
 
 .choice-btn {
   @extend .coalaButton;
-  width: 100%;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  font-size: 40px;
-  min-height: 118px;
+  width: 0px;
+  top: 15px;
+  bottom: 15px;
+  left: 30px;
+  min-height: 30px;
   &.selected {
     background-color: darken($gray, 50%);
     color: $white;
